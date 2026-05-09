@@ -294,7 +294,7 @@
     </section>
 
     <div id="video-modal" class="video-modal fixed inset-0 z-[70] items-center justify-center bg-slate-950/75 p-4">
-        <div id="video-dialog" class="max-w-[calc(100vw-2rem)] rounded-2xl border border-red-100 bg-white overflow-hidden shadow-2xl">
+        <div id="video-dialog" class="max-w-[calc(100vw-2rem)] rounded-2xl border border-red-100 bg-white overflow-hidden shadow-2xl transition-opacity duration-150">
             <div class="flex items-center justify-between gap-4 px-6 py-4 border-b border-red-100 bg-gradient-to-r from-red-50 via-orange-50 to-white">
                 <h4 id="video-modal-title" class="min-w-0 truncate text-sm md:text-base font-extrabold text-red-900">Video minh họa</h4>
                 <button id="video-close-btn" class="w-9 h-9 flex-shrink-0 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors">
@@ -332,10 +332,19 @@
             videoPlayer.style.height = `${targetHeight}px`;
         }
 
+        function showLoadedVideo() {
+            resizeVideoModal();
+            requestAnimationFrame(function() {
+                videoDialog.classList.remove("opacity-0");
+                videoPlayer.play().catch(function() {});
+            });
+        }
+
         function closeVideoModal() {
             videoModal.classList.remove("active");
             videoPlayer.pause();
             videoPlayer.removeAttribute("src");
+            videoDialog.classList.remove("opacity-0");
             videoDialog.removeAttribute("style");
             videoPlayer.removeAttribute("style");
             videoPlayer.load();
@@ -347,18 +356,16 @@
                 const videoSrc = btn.getAttribute("data-video");
                 const videoTitle = btn.getAttribute("data-title") || "Video minh họa";
                 videoModalTitle.textContent = videoTitle;
-                videoDialog.style.width = "min(960px, calc(100vw - 2rem))";
-                videoPlayer.style.width = "100%";
-                videoPlayer.style.height = "auto";
-                videoPlayer.style.aspectRatio = "16 / 9";
+                videoDialog.classList.add("opacity-0");
+                videoDialog.removeAttribute("style");
+                videoPlayer.removeAttribute("style");
                 videoPlayer.src = videoSrc;
                 videoModal.classList.add("active");
                 document.body.classList.add("overflow-hidden");
-                videoPlayer.play().catch(function() {});
             });
         });
 
-        videoPlayer.addEventListener("loadedmetadata", resizeVideoModal);
+        videoPlayer.addEventListener("loadedmetadata", showLoadedVideo);
         window.addEventListener("resize", function() {
             if (videoModal.classList.contains("active")) {
                 resizeVideoModal();
