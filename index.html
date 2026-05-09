@@ -302,7 +302,7 @@
                 </button>
             </div>
             <div class="bg-white leading-none">
-                <video id="video-player" class="block w-full bg-white object-contain" controls preload="metadata">
+                <video id="video-player" class="block bg-white object-contain" controls preload="metadata">
                     Trình duyệt không hỗ trợ phát video.
                 </video>
             </div>
@@ -328,6 +328,7 @@
 
             videoDialog.style.width = `${targetWidth}px`;
             videoPlayer.style.aspectRatio = "";
+            videoPlayer.style.width = `${targetWidth}px`;
             videoPlayer.style.height = `${targetHeight}px`;
         }
 
@@ -347,6 +348,7 @@
                 const videoTitle = btn.getAttribute("data-title") || "Video minh họa";
                 videoModalTitle.textContent = videoTitle;
                 videoDialog.style.width = "min(960px, calc(100vw - 2rem))";
+                videoPlayer.style.width = "100%";
                 videoPlayer.style.height = "auto";
                 videoPlayer.style.aspectRatio = "16 / 9";
                 videoPlayer.src = videoSrc;
