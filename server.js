@@ -48,6 +48,52 @@ function safePathFromUrl(requestUrl) {
   return fullPath;
 }
 
+function sendFile(req, res, filePath, stats) {
+  const ext = path.extname(filePath).toLowerCase();
+  const contentType = MIME_TYPES[ext] || "application/octet-stream";
+  const range = req.headers.range;
+
+  if (range && ext === ".mp4") {
+    const fileSize = stats.size;
+    const match = range.match(/bytes=(\d*)-(\d*)/);
+
+    if (!match) {
+      res.writeHead(416, { "Content-Range": `bytes */${fileSize}` });
+      res.end();
+      return;
+    }
+
+    const start = match[1] ? Number(match[1]) : 0;
+    const end = match[2] ? Number(match[2]) : fileSize - 1;
+
+    if (start >= fileSize || end >= fileSize || start > end) {
+      res.writeHead(416, { "Content-Range": `bytes */${fileSize}` });
+      res.end();
+      return;
+    }
+
+    res.writeHead(206, {
+      "Content-Type": contentType,
+      "Content-Length": end - start + 1,
+      "Content-Range": `bytes ${start}-${end}/${fileSize}`,
+      "Accept-Ranges": "bytes",
+      "Cache-Control": "no-cache",
+    });
+
+    fs.createReadStream(filePath, { start, end }).pipe(res);
+    return;
+  }
+
+  res.writeHead(200, {
+    "Content-Type": contentType,
+    "Content-Length": stats.size,
+    "Accept-Ranges": ext === ".mp4" ? "bytes" : "none",
+    "Cache-Control": "no-cache",
+  });
+
+  fs.createReadStream(filePath).pipe(res);
+}
+
 const server = http.createServer((req, res) => {
   try {
     if (!req.url) {
@@ -71,20 +117,13 @@ const server = http.createServer((req, res) => {
         ? path.join(filePath, "index.html")
         : filePath;
 
-      fs.readFile(targetPath, (readError, data) => {
-        if (readError) {
+      fs.stat(targetPath, (targetStatError, targetStats) => {
+        if (targetStatError || !targetStats.isFile()) {
           sendNotFound(res);
           return;
         }
 
-        const ext = path.extname(targetPath).toLowerCase();
-        const contentType = MIME_TYPES[ext] || "application/octet-stream";
-
-        res.writeHead(200, {
-          "Content-Type": contentType,
-          "Cache-Control": "no-cache",
-        });
-        res.end(data);
+        sendFile(req, res, targetPath, targetStats);
       });
     });
   } catch (error) {

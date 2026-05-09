@@ -66,20 +66,6 @@
             transition: all 0.3s ease;
         }
 
-        .tab-btn.active {
-            background: var(--mttq-red);
-            color: white;
-            box-shadow: 0 4px 12px rgba(218, 37, 29, 0.2);
-        }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .status-pill {
             background: #22c55e;
             color: white;
@@ -159,7 +145,7 @@
                     Trợ lý ảo MTTQ Việt Nam<br><span class="text-mttq text-sm">Kết nối ý dân - Lan tỏa trí tuệ</span>
                 </span>
             </div>
-            <a href="#" class="mttq-gradient text-white text-[11px] font-bold px-7 py-3 rounded-full uppercase tracking-widest shadow-lg">Khám phá ngay</a>
+            <a href="#noi-dung-chinh" class="mttq-gradient text-white text-[11px] font-bold px-7 py-3 rounded-full uppercase tracking-widest shadow-lg">Khám phá ngay</a>
         </div>
     </nav>
 
@@ -182,22 +168,14 @@
             </div>
         </div>
     </section>
-    <section class="pt-12 pb-20 bg-transparent min-h-screen">
+    <section id="noi-dung-chinh" class="scroll-mt-24 pt-12 pb-20 bg-transparent min-h-screen">
         <div class="max-w-6xl mx-auto px-6">
                           <div class="text-center mb-16">
                 <h2 class="text-4xl font-extrabold text-slate-950 mb-4 tracking-tighter uppercase">KẾT NỐI TRI THỨC - PHÁT HUY SỨC MẠNH ĐOÀN KẾT SỐ</h2>
      
             </div>
-            <div class="flex justify-center gap-4 mb-12">
-                <button onclick="openTab(event, 'roadmap')" class="tab-btn active px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wider transition-all">
-                    <i class="fa-solid fa-map-location-dot mr-2"></i> Ứng dụng AI
-                </button>
-                <button onclick="openTab(event, 'casestudy')" class="tab-btn px-8 py-3 rounded-full font-bold text-sm bg-white text-slate-600 border border-gray-200 uppercase tracking-wider transition-all">
-                    <i class="fa-solid fa-lightbulb mr-2"></i> Tình huống điển hình
-                </button>
-            </div>
 
-            <div id="roadmap" class="tab-content active">
+            <div id="roadmap">
                 <div class="phase-card bg-white/25 p-10 md:p-16 rounded-[4rem] relative overflow-hidden backdrop-blur-[2px]">
 
                     <div class="grid md:grid-cols-2 gap-12">
@@ -210,8 +188,8 @@
                                     <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Phục vụ người dân</h4>
                                 </div>
                                 <div class="flex flex-col gap-3">
-                                    <div class="function-badge"><i class="fa-solid fa-circle-info text-green-500"></i> <span class="text-blue-500">Hỏi đáp & hướng dẫn người dân thực hiện TTHC </span></div>
-                                    <div class="function-badge"><i class="fa-solid fa-circle-info text-gray-500"></i> Tổng đài lắng nghe và ghi nhận ý kiến người dân</div>
+                                    <div class="function-badge"><i class="fa-solid fa-circle-info text-slate-700"></i> <span>Hỏi đáp & hướng dẫn người dân thực hiện TTHC </span></div>
+                                    <div class="function-badge"><i class="fa-solid fa-circle-info text-slate-700"></i> Tổng đài lắng nghe và ghi nhận ý kiến người dân</div>
                                 </div>
                             </div>
 
@@ -223,9 +201,9 @@
                                     <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Hỗ trợ cán bộ MTTQ VIỆT NAM</h4>
                                 </div>
                                 <div class="flex flex-col gap-3">
-                                    <div class="function-badge"><i class="fa-solid fa-gavel text-gray-500"></i> Tìm kiếm, tra cứu văn bản từ Thư viện Pháp luật</div>
-									<div class="function-badge"><i class="fa-solid fa-gavel text-gray-500"></i> Tra cứu hồ sơ cán bộ</div>
-                                    <div class="function-badge"><i class="fa-solid fa-gavel text-gray-500"></i> Khuyến nghị giải đáp kiến nghị cử tri</div>
+                                    <div class="function-badge"><i class="fa-solid fa-gavel text-slate-700"></i> Tìm kiếm, tra cứu văn bản từ Thư viện Pháp luật</div>
+									<div class="function-badge"><i class="fa-solid fa-gavel text-slate-700"></i> Tra cứu hồ sơ cán bộ</div>
+                                    <div class="function-badge"><i class="fa-solid fa-gavel text-slate-700"></i> Khuyến nghị giải đáp kiến nghị cử tri</div>
                                 </div>
                             </div>
                         </div>
@@ -239,9 +217,9 @@
                                     <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Quản trị & Đào tạo</h4>
                                 </div>
                                 <div class="flex flex-col gap-3">
-                                    <div class="function-badge"><i class="fa-solid fa-clock text-gray-500"></i>Tổng đài nhắc việc, hỗ trợ hỏi đáp cho nhân sự MTTQ</div>
-									<div class="function-badge"><i class="fa-solid fa-clock text-green-500"></i><span class="text-blue-500">Tổng đài ghi nhận hoàn thành nhiệm vụ của các đầu mối MTTQ </span></div>
-                                    <div class="function-badge"><i class="fa-solid fa-clock text-green-500"></i><span class="text-blue-500">Giải pháp hỗ trợ tập huấn, đào tạo cho MTTQ</span></div>
+                                    <div class="function-badge"><i class="fa-solid fa-clock text-slate-700"></i>Tổng đài nhắc việc, hỗ trợ hỏi đáp cho nhân sự MTTQ</div>
+									<div class="function-badge"><i class="fa-solid fa-clock text-slate-700"></i><span>Tổng đài ghi nhận hoàn thành nhiệm vụ của các đầu mối MTTQ </span></div>
+                                    <div class="function-badge"><i class="fa-solid fa-clock text-slate-700"></i><span>Giải pháp hỗ trợ tập huấn, đào tạo cho MTTQ</span></div>
                                 </div>
                             </div>
 
@@ -269,7 +247,7 @@
                                     <p class="text-sm font-bold text-slate-800 mt-2">Đào tạo về tài chính cá nhân cho thanh niên</p>
                                     <p class="text-xs text-slate-500 mt-1 truncate">Hướng dẫn thực hành tài chính cá nhân</p>
                                 </div>
-                                <button class="video-preview-btn" data-title="Đào tạo về tài chính cá nhân cho thanh niên" data-video="sources/Mentor - Tài chính cá nhân cho thành niên.mp4">
+                                <button class="video-preview-btn" data-title="Đào tạo về tài chính cá nhân cho thanh niên" data-video="sources/AI_Mentor_Tai_chinh.mp4">
                                     <i class="fa-solid fa-play mr-1"></i> Xem
                                 </button>
                             </div>
@@ -280,7 +258,7 @@
                                     <p class="text-sm font-bold text-slate-800 mt-2">Đào tạo hỗ trợ nông dân trong nông nghiệp</p>
                                     <p class="text-xs text-slate-500 mt-1 truncate">Đào tạo kỹ năng sản xuất nông nghiệp</p>
                                 </div>
-                                <button class="video-preview-btn" data-title="Đào tạo hỗ trợ nông dân trong nông nghiệp" data-video="sources/Mentor-Hỗ trợ nông dân.mp4">
+                                <button class="video-preview-btn" data-title="Đào tạo hỗ trợ nông dân trong nông nghiệp" data-video="sources/AI_Mentor_Nong_Dan.mp4">
                                     <i class="fa-solid fa-play mr-1"></i> Xem
                                 </button>
                             </div>
@@ -291,7 +269,7 @@
                                     <p class="text-sm font-bold text-slate-800 mt-2">Tổng hợp báo cáo hỗ trợ cán bộ Mặt trận Tổ quốc Việt Nam</p>
                                     <p class="text-xs text-slate-500 mt-1 truncate">Tổng hợp số liệu và lập báo cáo nghiệp vụ</p>
                                 </div>
-                                <button class="video-preview-btn" data-title="Hỗ trợ cán bộ Mặt trận Tổ quốc Việt Nam" data-video="sources/Tổng hợp - báo cáo.mp4">
+                                <button class="video-preview-btn" data-title="Hỗ trợ cán bộ Mặt trận Tổ quốc Việt Nam" data-video="sources/MTTQ_THBC.mp4">
                                     <i class="fa-solid fa-play mr-1"></i> Xem
                                 </button>
                             </div>
@@ -299,9 +277,12 @@
                             <div class="video-item h-full">
                                 <div class="flex-1 min-w-0">
                                     <p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.25em]">Hỗ trợ người dân</p>
-                                    <p class="text-sm font-bold text-slate-800 mt-2">Tư vấn nhanh thủ tục, hỏi đáp và tiếp nhận phản ánh</p>
-                                    <p class="text-xs text-slate-500 mt-1 truncate">Kênh tương tác trực tiếp đang được cập nhật</p>
+                                    <p class="text-sm font-bold text-slate-800 mt-2">Dân chủ ở cơ sở</p>
+                                    <p class="text-xs text-slate-500 mt-1">Trợ lý hỗ trợ MTTQ Việt Nam trong công tác tuyên truyền</p>
                                 </div>
+                                <button class="video-preview-btn" data-title="Trợ lý hỗ trợ MTTQ Việt Nam trong công tác tuyên truyền và thực hiện dân chủ ở cơ sở" data-video="sources/MTTQ_DAN_CHU_CO_SO.mp4">
+                                    <i class="fa-solid fa-play mr-1"></i> Xem
+                                </button>
                             </div>
 
                         </div>
@@ -309,51 +290,19 @@
                 </div>
             </div>
 
-     <div id="casestudy" class="tab-content">
-    <div class="bg-white/35 p-6 rounded-[3rem] shadow-2xl border border-slate-100 backdrop-blur-[2px]">
-        <div class="mb-6 flex justify-between items-center px-4">
-            <div class="flex items-center gap-3">
-                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                <h3 class="ml-2 text-sm font-bold text-slate-400 uppercase tracking-widest">Giao diện Trợ lý ảo trực tuyến</h3>
-            </div>
-            <span class="text-[10px] font-black text-blue-500 bg-blue-50 px-3 py-1 rounded-full">
-                <i class="fa-solid fa-shield-halved mr-1"></i> KÊNH KẾT NỐI BẢO MẬT SSL
-            </span>
-        </div>
-
-        <div class="relative w-full h-[650px] bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-200">
-            <iframe 
-                src="about:blank" 
-                class="w-full h-full border-none"
-                allow="microphone; camera; clipboard-write"
-                title="Giao diện trợ lý ảo AI">
-            </iframe>
-            
-            <div id="loading-overlay" class="absolute inset-0 flex items-center justify-center bg-white/50 z-0 pointer-events-none backdrop-blur-[1px]">
-                <div class="text-center">
-                    <i class="fa-solid fa-circle-notch animate-spin text-mttq text-3xl mb-4"></i>
-                    <p class="text-xs font-bold text-slate-400">ĐANG KẾT NỐI HỆ THỐNG AI...</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
         </div>
     </section>
 
     <div id="video-modal" class="video-modal fixed inset-0 z-[70] items-center justify-center bg-slate-950/75 p-4">
-        <div class="w-full max-w-4xl rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-2xl">
-            <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-                <h4 id="video-modal-title" class="text-sm md:text-base font-extrabold text-slate-900">Video minh họa</h4>
-                <button id="video-close-btn" class="w-9 h-9 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors">
+        <div id="video-dialog" class="max-w-[calc(100vw-2rem)] rounded-2xl border border-red-100 bg-white overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between gap-4 px-6 py-4 border-b border-red-100 bg-gradient-to-r from-red-50 via-orange-50 to-white">
+                <h4 id="video-modal-title" class="min-w-0 truncate text-sm md:text-base font-extrabold text-red-900">Video minh họa</h4>
+                <button id="video-close-btn" class="w-9 h-9 flex-shrink-0 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <div class="bg-slate-900">
-                <video id="video-player" class="w-full h-[260px] md:h-[520px]" controls preload="metadata">
+            <div class="bg-white leading-none">
+                <video id="video-player" class="block w-full bg-white object-contain" controls preload="metadata">
                     Trình duyệt không hỗ trợ phát video.
                 </video>
             </div>
@@ -361,32 +310,32 @@
     </div>
 
     <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
-            tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-                tablinks[i].classList.add("bg-white", "text-slate-600");
-            }
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-            evt.currentTarget.classList.remove("bg-white", "text-slate-600");
-        }
-
         const previewButtons = document.querySelectorAll(".video-preview-btn");
         const videoModal = document.getElementById("video-modal");
+        const videoDialog = document.getElementById("video-dialog");
         const videoPlayer = document.getElementById("video-player");
         const videoModalTitle = document.getElementById("video-modal-title");
         const videoCloseBtn = document.getElementById("video-close-btn");
+
+        function resizeVideoModal() {
+            const videoWidth = videoPlayer.videoWidth || 960;
+            const videoHeight = videoPlayer.videoHeight || 540;
+            const maxWidth = window.innerWidth - 32;
+            const maxHeight = Math.floor(window.innerHeight * 0.72);
+            const scale = Math.min(maxWidth / videoWidth, maxHeight / videoHeight, 1);
+            const targetWidth = Math.floor(videoWidth * scale);
+            const targetHeight = Math.floor(videoHeight * scale);
+
+            videoDialog.style.width = `${targetWidth}px`;
+            videoPlayer.style.height = `${targetHeight}px`;
+        }
 
         function closeVideoModal() {
             videoModal.classList.remove("active");
             videoPlayer.pause();
             videoPlayer.removeAttribute("src");
+            videoDialog.removeAttribute("style");
+            videoPlayer.removeAttribute("style");
             videoPlayer.load();
             document.body.classList.remove("overflow-hidden");
         }
@@ -396,11 +345,20 @@
                 const videoSrc = btn.getAttribute("data-video");
                 const videoTitle = btn.getAttribute("data-title") || "Video minh họa";
                 videoModalTitle.textContent = videoTitle;
+                videoDialog.style.width = "min(960px, calc(100vw - 2rem))";
+                videoPlayer.style.height = "auto";
                 videoPlayer.src = videoSrc;
                 videoModal.classList.add("active");
                 document.body.classList.add("overflow-hidden");
                 videoPlayer.play().catch(function() {});
             });
+        });
+
+        videoPlayer.addEventListener("loadedmetadata", resizeVideoModal);
+        window.addEventListener("resize", function() {
+            if (videoModal.classList.contains("active")) {
+                resizeVideoModal();
+            }
         });
 
         videoCloseBtn.addEventListener("click", closeVideoModal);
