@@ -327,6 +327,7 @@
             const targetHeight = Math.floor(videoHeight * scale);
 
             videoDialog.style.width = `${targetWidth}px`;
+            videoPlayer.style.aspectRatio = "";
             videoPlayer.style.height = `${targetHeight}px`;
         }
 
@@ -347,6 +348,7 @@
                 videoModalTitle.textContent = videoTitle;
                 videoDialog.style.width = "min(960px, calc(100vw - 2rem))";
                 videoPlayer.style.height = "auto";
+                videoPlayer.style.aspectRatio = "16 / 9";
                 videoPlayer.src = videoSrc;
                 videoModal.classList.add("active");
                 document.body.classList.add("overflow-hidden");
